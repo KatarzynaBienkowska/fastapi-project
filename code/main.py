@@ -2,11 +2,11 @@ from fastapi import FastAPI, File, UploadFile, Depends
 from fastapi.responses import StreamingResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
-from prime import is_prime as is_prime_result
-from picture_invert import invert_picture as inverted_picture
-from access_token import Token, oauth2_scheme
-from access_token import login_for_access_token as oauth_login
-from get_time import get_current_time as time_result
+from code.prime import is_prime as is_prime_result
+from code.picture_invert import invert_picture as inverted_picture
+from code.access_token import Token, oauth2_scheme
+from code.access_token import login_for_access_token as oauth_login
+from code.get_time import get_current_time as time_result
 
 
 app = FastAPI()

@@ -1,5 +1,5 @@
 from fastapi import Depends
-from access_token import oauth2_scheme, get_current_user
+from code.access_token import oauth2_scheme, get_current_user
 from datetime import datetime
 
 
