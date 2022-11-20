@@ -1,5 +1,6 @@
-from fastapi import FastAPI, File, UploadFile, Depends
-from fastapi.responses import StreamingResponse
+from fastapi import FastAPI, Request, File, UploadFile, Depends
+from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.templating import Jinja2Templates
 from fastapi.security import OAuth2PasswordRequestForm
 
 from code.prime import is_prime as is_prime_result
@@ -11,10 +12,17 @@ from code.get_time import get_current_time as time_result
 
 app = FastAPI()
 
+templates = Jinja2Templates(directory="code/templates")
+
 
 @app.get("/prime/{number}")
 def is_prime(number: int):
     return is_prime_result(number)
+
+
+@app.get("/upload_image", response_class=HTMLResponse)
+def upload_image(request: Request):
+    return templates.TemplateResponse("upload_file.html", {"request": request})
 
 
 @app.post("/picture/invert")
